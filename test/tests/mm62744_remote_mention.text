@@ -1,0 +1,9 @@
+These links would be parsed as URLs if not for the urlFilter used for tests:
+
+@user:org
+
+This is a mention for @user1:org1.
+
+This is a mention for @user2:org/@user3:org1/@user4:org1.
+
+We need to mention User5 (@user5:org2)!
