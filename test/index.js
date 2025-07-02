@@ -490,6 +490,38 @@ function parseArg(argv) {
     return arg;
   }
 
+  options.marked = {
+    urlFilter(url) {
+      url = url.toLowerCase();
+
+      const validPrefixes = [
+        // Allow links without protocols
+        'www.',
+        'www1.',
+
+        // Allow standard protocols
+        'http://',
+        'https://',
+
+        // Allow protocols expected by other tests
+        'asdf:',
+        'asdf://',
+        'asdf4://',
+        'taco+what://',
+        'taco.what://',
+        'test.:',
+      ];
+
+      for (const prefix of validPrefixes) {
+        if (url.startsWith(prefix)) {
+          return true;
+        }
+      }
+
+      return false;
+    },
+  };
+
   while (argv.length) {
     arg = getarg();
     switch (arg) {
@@ -524,7 +556,6 @@ function parseArg(argv) {
           if (!marked.defaults.hasOwnProperty(opt)) {
             continue;
           }
-          options.marked = options.marked || {};
           if (arg.indexOf('--no-') === 0) {
             options.marked[opt] = typeof marked.defaults[opt] !== 'boolean'
               ? null
