@@ -1,0 +1,9 @@
+tel:+34600517276
+
+tel:+1-555-123-4567
+
+Call tel:+34600517276.
+
+tel:5551234
+
+This link would be parsed as a URL if not for the urlFilter used for tests: sms:+34600517276
