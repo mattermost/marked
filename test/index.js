@@ -510,6 +510,7 @@ function parseArg(argv) {
         'taco+what://',
         'taco.what://',
         'test.:',
+        'tel:',
       ];
 
       for (const prefix of validPrefixes) {
